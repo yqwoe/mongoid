@@ -48,6 +48,7 @@ module Mongoid
         #
         # @since 3.0.0
         def store_in(options)
+            Rails.logger.info "StorageOptions.store_in :database=> #{options}"
             if options[:database].present? || options[:collection].present? || options[:client].present?
                 Validators::Storage.validate(self, options)
                 storage_options.merge!(options)
